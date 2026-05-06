@@ -1,37 +1,40 @@
-# Bet Conversion Platform
+# Bet Code Converter 🚀
 
-A professional Flask-based system for converting betting codes, managing wallets, and tracking activity.
+A smart platform for converting betting codes across multiple platforms with wallet integration and real-time tracking.
 
-## Features
-- Code conversion system
-- Wallet integration
-- Dashboard analytics
-- Secure authentication
+## 🔥 Features
 
-## Tech Stack
-- Python (Flask)
-- HTML / CSS / Bootstrap
-- SQLite (for now)
+* Instant Bet Code Conversion
+* Wallet System (Deposit & Tracking)
+* Transaction History
+* Dashboard Analytics
+* Secure Authentication System
 
-## Setup
+## 🛠 Tech Stack
 
-1. Clone the repo:
-git clone https://github.com/yourusername/project-name.git
+* Python (Flask)
+* SQLite (for now)
+* HTML, CSS, Bootstrap
+* JavaScript (Chart.js)
 
-2. Go into the folder:
-cd project-name
+## ⚙️ Setup
 
-3. Create virtual environment:
+```bash
+git clone https://github.com/ONGOD007/BET_CODE_CONVERTER.git
+cd BET_CODE_CONVERTER
+
 python -m venv venv
+source venv/Scripts/activate   # Windows
 
-4. Activate it:
-venv\Scripts\activate
-
-5. Install dependencies:
 pip install -r requirements.txt
 
-6. Create `.env` file:
-Add your SECRET_KEY and DATABASE_URL
+flask run
+```
 
-7. Run the app:
-python run.py
+## ⚠️ Note
+
+Create your `.env` file and add your secret keys.
+
+---
+
+Built with purpose.
