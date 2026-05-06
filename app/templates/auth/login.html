@@ -1,0 +1,194 @@
+{% extends "layout/base.html" %}
+{% block content %}
+
+<div class="auth-page">
+
+    <!-- ================= LEFT PANEL ================= -->
+    <div class="auth-left">
+
+        <div class="auth-gradient"></div>
+
+        <div class="auth-left-content">
+
+            <div class="auth-mini-badge">
+                <i class="fa fa-shield-halved"></i>
+                Protected Access
+            </div>
+
+            <h1 class="auth-big-title">
+                Welcome Back
+            </h1>
+
+            <p class="auth-description">
+                Access your wallet, dashboard,
+                transactions and smart conversion tools
+                securely from one platform.
+            </p>
+
+            <!-- FEATURES -->
+            <div class="auth-feature-list">
+
+                <div class="feature-card">
+                    <div class="feature-icon blue">
+                        <i class="fa fa-lock"></i>
+                    </div>
+
+                    <div>
+                        <h6>Secure Authentication</h6>
+                        <small>Advanced encrypted login system</small>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon green">
+                        <i class="fa fa-bolt"></i>
+                    </div>
+
+                    <div>
+                        <h6>Instant Access</h6>
+                        <small>Fast and optimized experience</small>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon purple">
+                        <i class="fa fa-wallet"></i>
+                    </div>
+
+                    <div>
+                        <h6>Wallet Management</h6>
+                        <small>Control deposits and transfers</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= RIGHT PANEL ================= -->
+    <div class="auth-right">
+
+        <div class="auth-card-pro">
+
+            <!-- TOP -->
+            <div class="auth-top">
+
+                <div class="auth-logo">
+                    <i class="fa fa-sign-in-alt"></i>
+                </div>
+
+                <h3>Login Account</h3>
+
+                <p>
+                    Enter your details to continue
+                </p>
+
+            </div>
+
+
+            <!-- FORM -->
+            <form method="POST" class="auth-form">
+
+                <!-- USER -->
+                <div class="input-group-pro">
+
+                    <label>Login ID</label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa fa-user"></i>
+
+                        <input
+                        type="text"
+                        name="email"
+                        placeholder="Email / Username / Phone"
+                        required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+                <div class="input-group-pro">
+
+                    <label>Password</label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa fa-lock"></i>
+
+                        <input
+                        type="password"
+                        id="loginPassword"
+                        name="password"
+                        placeholder="Enter password"
+                        required>
+
+                        <button
+                        type="button"
+                        class="toggle-pass"
+                        onclick="togglePassword('loginPassword', this)">
+
+                            <i class="fa fa-eye"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OPTIONS -->
+                <div class="auth-options">
+
+                    <label class="remember-box">
+
+                        <input type="checkbox">
+
+                        <span>Remember me</span>
+
+                    </label>
+
+                    <a href="/auth/forgot-password">
+                        Forgot Password?
+                    </a>
+
+                </div>
+
+
+                <!-- BUTTON -->
+                <button id="loginBtn" class="auth-btn">
+
+                    <span>Login</span>
+
+                    <i class="fa fa-arrow-right"></i>
+
+                </button>
+
+            </form>
+
+
+            <!-- FOOTER -->
+            <div class="auth-footer">
+
+                Don’t have an account?
+
+                <a href="/auth/signup">
+                    Create Account
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/login.js') }}"></script>
+
+{% endblock %}

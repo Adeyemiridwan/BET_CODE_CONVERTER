@@ -1,0 +1,437 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+
+<div class="converter-page">
+
+    <div class="converter-wrapper">
+
+        <!-- ===================================================== -->
+        <!-- ================= HERO CARD ========================= -->
+        <!-- ===================================================== -->
+
+        <div class="converter-hero-card">
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+
+                <div class="hero-top">
+
+                    <div>
+
+                        <span class="hero-label">
+                            Smart Converter
+                        </span>
+
+                        <h2 class="title">
+                            Seamless Betting Code Conversion
+                        </h2>
+                    </div>
+
+                    <div class="hero-icon">
+                        <i class="fa fa-code"></i>
+                    </div>
+
+                </div>
+
+                <p class="hero-subtitle">
+                    Convert betting codes instantly across multiple platforms with secure processing.
+                </p>
+
+                <div class="hero-stats">
+
+                    <div class="hero-stat">
+                        <strong>Fast</strong>
+                        <small>Instant Conversion</small>
+                    </div>
+
+                    <div class="hero-stat">
+                        <strong>Secure</strong>
+                        <small>Protected System</small>
+                    </div>
+
+                    <div class="hero-stat">
+                        <strong>Smart</strong>
+                        <small>Auto Processing</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ===================================================== -->
+        <!-- ================= CONVERTER PANEL =================== -->
+        <!-- ===================================================== -->
+
+        <div class="converter-panel">
+
+            <form method="POST" id="convertForm">
+
+                <!-- ================= PLATFORM SECTION ================= -->
+
+                <div class="platform-section">
+
+                    <!-- FROM -->
+
+                    <div class="platform-card">
+
+                        <label>
+                            From Platform
+                        </label>
+
+                        <div class="platform-select-box">
+
+                            <div class="platform-icon from-icon">
+                                <i class="fa fa-arrow-up"></i>
+                            </div>
+
+                            <select name="from_platform">
+
+                                <option>Bet9ja</option>
+                                <option>SportyBet</option>
+                                <option>1xBet</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SWITCH -->
+
+                    <div class="switch-box">
+
+                        <button
+                        type="button"
+                        id="switchBtn">
+
+                            <i class="fa fa-right-left"></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- TO -->
+
+                    <div class="platform-card">
+
+                        <label>
+                            To Platform
+                        </label>
+
+                        <div class="platform-select-box">
+
+                            <div class="platform-icon to-icon">
+                                <i class="fa fa-arrow-down"></i>
+                            </div>
+
+                            <select name="to_platform">
+
+                                <option>SportyBet</option>
+                                <option>Bet9ja</option>
+                                <option>1xBet</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ===================================================== -->
+                <!-- ================= INPUT SECTION ==================== -->
+                <!-- ===================================================== -->
+
+                <div class="code-box">
+
+                    <div class="code-top">
+
+                        <div>
+
+                            <small class="code-label">
+                                Enter Bet Code
+                            </small>
+
+                            <h6>
+                                Conversion Input
+                            </h6>
+
+                        </div>
+
+                        <div class="secure-chip">
+
+                            <i class="fa fa-shield-halved"></i>
+
+                            <span>Secure</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="code-input-wrapper">
+
+                        <div class="code-input-icon">
+                            <i class="fa fa-key"></i>
+                        </div>
+
+                        <input
+                        type="text"
+                        name="code"
+                        id="codeInput"
+                        class="code-input"
+                        placeholder="Paste your bet code..."
+                        required>
+
+                    </div>
+
+
+                    <!-- QUICK INFO -->
+
+                    <div class="code-info-row">
+
+                        <div class="info-card">
+
+                            <i class="fa fa-bolt"></i>
+
+                            <span>
+                                Instant Conversion
+                            </span>
+
+                        </div>
+
+                        <div class="info-card">
+
+                            <i class="fa fa-lock"></i>
+
+                            <span>
+                                Protected Processing
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ===================================================== -->
+                <!-- ================= RESULT PANEL ===================== -->
+                <!-- ===================================================== -->
+
+                {% if result %}
+
+                <div class="result-card">
+
+                    <div class="result-top">
+
+                        <div>
+
+                            <small class="result-label">
+                                Converted Result
+                            </small>
+
+                            <h6>
+                                New Generated Code
+                            </h6>
+
+                        </div>
+
+                        <div class="success-icon">
+                            <i class="fa fa-check"></i>
+                        </div>
+
+                    </div>
+
+
+                    <div class="result-code-box" id="convertedCode">
+
+                        <span>
+                            {{ result }}
+                        </span>
+
+                        <button
+                        type="button"
+                        class="copy-btn">
+
+                            <i class="fa fa-copy"></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="result-footer">
+
+                        <div class="result-status">
+
+                            <div class="pulse-dot"></div>
+
+                            <span>
+                                Ready to use
+                            </span>
+
+                        </div>
+
+                        <small>
+                            Tap to copy instantly
+                        </small>
+
+                    </div>
+
+                </div>
+
+                {% endif %}
+
+
+
+                <!-- ===================================================== -->
+                <!-- ================= BUTTON =========================== -->
+                <!-- ===================================================== -->
+
+                <button id="convertBtn" class="convert-btn">
+
+                    <div class="btn-left">
+
+                        <div class="btn-icon">
+                            <i class="fa fa-code"></i>
+                        </div>
+
+                        <span>
+                            Convert Code
+                        </span>
+
+                    </div>
+
+                    <div class="btn-arrow">
+                        <i class="fa fa-arrow-right"></i>
+                    </div>
+
+                </button>
+
+            </form>
+
+        </div>
+
+
+
+        <!-- ===================================================== -->
+        <!-- ================= RECENT INFO ======================= -->
+        <!-- ===================================================== -->
+
+        <div class="converter-footer-card">
+
+            <div class="footer-item">
+
+                <div class="footer-icon">
+                    <i class="fa fa-clock"></i>
+                </div>
+
+                <div>
+
+                    <strong>
+                        Fast Conversion
+                    </strong>
+
+                    <small>
+                        Real-time processing
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-item">
+
+                <div class="footer-icon">
+                    <i class="fa fa-shield"></i>
+                </div>
+
+                <div>
+
+                    <strong>
+                        Secure System
+                    </strong>
+
+                    <small>
+                        Protected transactions
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ===================================================== -->
+<!-- ================= LOADING OVERLAY =================== -->
+<!-- ===================================================== -->
+
+<div id="loadingOverlay">
+
+    <div class="loading-card">
+
+        <div class="loader-ring"></div>
+
+        <h5>
+            Processing Conversion
+        </h5>
+
+        <p>
+            Generating secure converted code...
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- ===================================================== -->
+<!-- ================= COPY TOAST ======================== -->
+<!-- ===================================================== -->
+
+<div class="position-fixed bottom-0 end-0 p-3 toast-zone">
+
+    <div
+    id="liveToast"
+    class="toast align-items-center text-white bg-success border-0">
+
+        <div class="d-flex">
+
+            <div class="toast-body">
+                Code copied successfully
+            </div>
+
+            <button
+            class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast"></button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/converter.js') }}"></script>
+
+
+{% endblock %}

@@ -1,0 +1,307 @@
+{% extends "layout/base.html" %}
+{% block content %}
+
+<div class="auth-page">
+
+    <!-- ================= LEFT SIDE ================= -->
+
+    <div class="auth-left">
+
+        <div class="auth-left-overlay"></div>
+
+        <div class="auth-left-content">
+
+            <div class="auth-badge">
+                <i class="fa fa-shield"></i>
+                Secure Access
+            </div>
+
+            <h1>
+                Create Your <br>
+                Smart Account
+            </h1>
+
+            <p>
+                Access your wallet, convert codes instantly,
+                track transactions, and manage everything
+                from one secure dashboard.
+            </p>
+
+            <div class="auth-features">
+
+                <div class="feature-item">
+                    <i class="fa fa-wallet"></i>
+                    <span>Secure Wallet System</span>
+                </div>
+
+                <div class="feature-item">
+                    <i class="fa fa-bolt"></i>
+                    <span>Fast Bet Conversion</span>
+                </div>
+
+                <div class="feature-item">
+                    <i class="fa fa-chart-line"></i>
+                    <span>Advanced Dashboard</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= RIGHT SIDE ================= -->
+
+    <div class="auth-right">
+
+        <div class="auth-card-pro">
+
+            <!-- HEADER -->
+            <div class="auth-header">
+
+                <div class="auth-logo">
+                    <i class="fa fa-user-plus"></i>
+                </div>
+
+                <h3>Create Account</h3>
+
+                <p>
+                    Start your journey with BetConverter
+                </p>
+
+            </div>
+
+            <!-- FORM -->
+            <form method="POST" class="auth-form">
+
+                <!-- NAME -->
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="input-group-pro">
+
+                            <label>First Name</label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fa fa-user"></i>
+
+                                <input
+                                type="text"
+                                name="first_name"
+                                placeholder="John"
+                                required>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="input-group-pro">
+
+                            <label>Last Name</label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fa fa-user"></i>
+
+                                <input
+                                type="text"
+                                name="last_name"
+                                placeholder="Doe"
+                                required>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- USERNAME -->
+                <div class="input-group-pro">
+
+                    <label>Username</label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa fa-at"></i>
+
+                        <input
+                        type="text"
+                        name="username"
+                        placeholder="Enter username"
+                        required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EMAIL -->
+                <div class="input-group-pro">
+
+                    <label>Email Address</label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa fa-envelope"></i>
+
+                        <input
+                        type="email"
+                        name="email"
+                        placeholder="example@email.com"
+                        required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PHONE -->
+                <div class="input-group-pro">
+
+                    <label>Phone Number</label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa fa-phone"></i>
+
+                        <input
+                        type="text"
+                        name="phone"
+                        placeholder="+234..."
+                        required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+                <div class="input-group-pro">
+
+                    <label>Password</label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa fa-lock"></i>
+
+                        <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Create password"
+                        required>
+
+                        <button
+                        type="button"
+                        class="toggle-pass"
+                        onclick="togglePassword('password', this)">
+
+                            <i class="fa fa-eye"></i>
+
+                        </button>
+
+                    </div>
+
+                    <!-- STRENGTH -->
+                    <div class="password-strength">
+
+                        <div class="strength-bar">
+                            <span id="strengthFill"></span>
+                        </div>
+
+                        <small id="passwordStrength">
+                            Password strength
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONFIRM -->
+                <div class="input-group-pro">
+
+                    <label>Confirm Password</label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa fa-lock"></i>
+
+                        <input
+                        type="password"
+                        id="confirm_password"
+                        name="confirm_password"
+                        placeholder="Confirm password"
+                        required>
+
+                        <button
+                        type="button"
+                        class="toggle-pass"
+                        onclick="togglePassword('confirm_password', this)">
+
+                            <i class="fa fa-eye"></i>
+
+                        </button>
+
+                    </div>
+
+                    <small id="matchMessage"></small>
+
+                </div>
+
+
+                <!-- TERMS -->
+                <div class="terms-box">
+
+                    <input type="checkbox" required>
+
+                    <span>
+                        I agree to the Terms &
+                        Privacy Policy
+                    </span>
+
+                </div>
+
+
+                <!-- BUTTON -->
+                <button class="auth-btn">
+
+                    <span>Create Account</span>
+
+                    <i class="fa fa-arrow-right"></i>
+
+                </button>
+
+            </form>
+
+
+            <!-- FOOTER -->
+            <div class="auth-footer">
+
+                Already have an account?
+
+                <a href="/auth/login">
+                    Login
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/signup.js') }}"></script>
+
+{% endblock %}

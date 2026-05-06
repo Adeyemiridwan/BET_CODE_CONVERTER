@@ -1,0 +1,372 @@
+/* ================= PAGE ================= */
+
+.history-page{
+display:flex;
+flex-direction:column;
+gap:24px;
+}
+
+/* ================= HEADER ================= */
+
+.history-header{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.history-badge{
+display:inline-flex;
+align-items:center;
+gap:10px;
+padding:10px 16px;
+border-radius:999px;
+background:
+linear-gradient(
+135deg,
+rgba(59,130,246,0.12),
+rgba(99,102,241,0.08)
+);
+color:#3b82f6;
+font-size:13px;
+font-weight:600;
+margin-bottom:18px;
+}
+
+.history-header h2{
+font-size:34px;
+font-weight:800;
+margin-bottom:10px;
+color:var(--text);
+}
+
+.history-header p{
+max-width:620px;
+color:var(--muted);
+line-height:1.7;
+font-size:15px;
+}
+
+/* ================= STATS ================= */
+
+.history-stats{
+display:flex;
+gap:15px;
+}
+
+.stat-card-mini{
+display:flex;
+align-items:center;
+gap:15px;
+padding:18px 20px;
+border-radius:22px;
+background:var(--card);
+border:1px solid var(--border);
+box-shadow:
+0 10px 30px rgba(0,0,0,0.04);
+min-width:180px;
+}
+
+.stat-icon{
+width:55px;
+height:55px;
+border-radius:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:20px;
+color:white;
+}
+
+.stat-icon.blue{
+background:
+linear-gradient(
+135deg,
+#3b82f6,
+#6366f1
+);
+}
+
+.stat-card-mini small{
+display:block;
+color:var(--muted);
+margin-bottom:4px;
+}
+
+.stat-card-mini h5{
+margin:0;
+font-size:24px;
+font-weight:700;
+color:var(--text);
+}
+
+/* ================= CARD ================= */
+
+.history-card{
+background:var(--card);
+border:1px solid var(--border);
+border-radius:30px;
+overflow:hidden;
+box-shadow:
+0 15px 50px rgba(0,0,0,0.05);
+}
+
+/* ================= TOPBAR ================= */
+
+.history-topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:25px 30px;
+border-bottom:1px solid var(--border);
+flex-wrap:wrap;
+gap:15px;
+}
+
+.history-topbar h5{
+font-size:22px;
+font-weight:700;
+margin-bottom:4px;
+color:var(--text);
+}
+
+.history-topbar small{
+color:var(--muted);
+}
+
+.table-filter{
+display:flex;
+align-items:center;
+gap:10px;
+padding:12px 16px;
+border-radius:14px;
+background:
+linear-gradient(
+135deg,
+rgba(59,130,246,0.08),
+rgba(99,102,241,0.06)
+);
+color:#3b82f6;
+font-size:14px;
+font-weight:600;
+}
+
+/* ================= TABLE ================= */
+
+.history-table{
+width:100%;
+border-collapse:collapse;
+}
+
+.history-table thead{
+background:
+linear-gradient(
+135deg,
+rgba(59,130,246,0.03),
+rgba(99,102,241,0.02)
+);
+}
+
+.history-table thead th{
+padding:20px 24px;
+font-size:13px;
+font-weight:700;
+color:var(--muted);
+text-transform:uppercase;
+letter-spacing:0.5px;
+border:none;
+}
+
+.history-table tbody tr{
+border-top:1px solid var(--border);
+transition:0.3s ease;
+}
+
+.history-table tbody tr:hover{
+background:
+rgba(59,130,246,0.03);
+}
+
+.history-table tbody td{
+padding:24px;
+vertical-align:middle;
+border:none;
+}
+
+/* ================= ID ================= */
+
+.history-id{
+width:42px;
+height:42px;
+border-radius:14px;
+background:
+linear-gradient(
+135deg,
+#eff6ff,
+#eef2ff
+);
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:700;
+color:#3b82f6;
+}
+
+/* ================= CONVERSION ================= */
+
+.conversion-box{
+display:flex;
+align-items:center;
+gap:16px;
+}
+
+.conversion-icon{
+width:52px;
+height:52px;
+border-radius:18px;
+background:
+linear-gradient(
+135deg,
+rgba(59,130,246,0.15),
+rgba(99,102,241,0.12)
+);
+display:flex;
+align-items:center;
+justify-content:center;
+color:#3b82f6;
+font-size:20px;
+flex-shrink:0;
+}
+
+.conversion-title{
+font-weight:700;
+font-size:15px;
+color:var(--text);
+word-break:break-all;
+}
+
+.arrow{
+margin:0 10px;
+color:#3b82f6;
+}
+
+.conversion-box small{
+color:var(--muted);
+}
+
+/* ================= FEE ================= */
+
+.fee-box{
+display:flex;
+flex-direction:column;
+}
+
+.fee-amount{
+font-size:17px;
+font-weight:700;
+color:#ef4444;
+}
+
+.fee-box small{
+color:var(--muted);
+}
+
+/* ================= STATUS ================= */
+
+.status-badge{
+display:inline-flex;
+align-items:center;
+gap:10px;
+padding:10px 16px;
+border-radius:999px;
+background:
+rgba(34,197,94,0.12);
+color:#22c55e;
+font-size:13px;
+font-weight:700;
+}
+
+.status-dot{
+width:8px;
+height:8px;
+border-radius:50%;
+background:#22c55e;
+}
+
+/* ================= DATE ================= */
+
+.date-main{
+font-weight:700;
+color:var(--text);
+margin-bottom:4px;
+}
+
+.date-box small{
+color:var(--muted);
+}
+
+/* ================= EMPTY ================= */
+
+.empty-history{
+padding:70px 20px;
+text-align:center;
+}
+
+.empty-icon{
+width:90px;
+height:90px;
+margin:auto;
+margin-bottom:20px;
+border-radius:28px;
+background:
+linear-gradient(
+135deg,
+rgba(59,130,246,0.08),
+rgba(99,102,241,0.05)
+);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:34px;
+color:#3b82f6;
+}
+
+.empty-history h5{
+font-size:24px;
+font-weight:700;
+margin-bottom:10px;
+color:var(--text);
+}
+
+.empty-history p{
+max-width:400px;
+margin:auto;
+line-height:1.7;
+color:var(--muted);
+}
+
+/* ================= DARK MODE ================= */
+
+body.dark .history-table tbody tr:hover{
+background:
+rgba(255,255,255,0.02);
+}
+
+body.dark .history-id{
+background:
+linear-gradient(
+135deg,
+#172554,
+#312e81
+);
+}
+
+body.dark .conversion-icon{
+background:
+linear-gradient(
+135deg,
+rgba(59,130,246,0.18),
+rgba(99,102,241,0.15)
+);
+}

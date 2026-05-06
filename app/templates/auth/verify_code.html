@@ -1,0 +1,173 @@
+{% extends "layout/base.html" %}
+{% block content %}
+
+<div class="auth-page">
+
+    <!-- ================= LEFT PANEL ================= -->
+    <div class="auth-left">
+
+        <div class="auth-left-overlay"></div>
+
+        <div class="auth-left-content">
+
+            <div class="auth-badge">
+                <i class="fa fa-shield-check"></i>
+                Secure Verification
+            </div>
+
+            <h1>
+                Confirm <br>
+                Your Identity
+            </h1>
+
+            <p>
+                Enter the secure verification code sent
+                to your device to continue safely into
+                your account and protected wallet system.
+            </p>
+
+            <div class="auth-features">
+
+                <div class="feature-item">
+                    <i class="fa fa-lock"></i>
+                    <span>Protected Verification Flow</span>
+                </div>
+
+                <div class="feature-item">
+                    <i class="fa fa-bolt"></i>
+                    <span>Instant Verification Access</span>
+                </div>
+
+                <div class="feature-item">
+                    <i class="fa fa-user-shield"></i>
+                    <span>Advanced Security Layer</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= RIGHT PANEL ================= -->
+    <div class="auth-right">
+
+        <div class="auth-card-pro">
+
+            <!-- HEADER -->
+            <div class="auth-header">
+
+                <div class="auth-logo">
+                    <i class="fa fa-key"></i>
+                </div>
+
+                <h3>Verification Code</h3>
+
+                <p>
+                    Enter the 4-digit verification code
+                    sent to your registered account
+                </p>
+
+            </div>
+
+
+            <!-- FORM -->
+            <form method="POST" class="auth-form" id="verifyForm">
+
+                <!-- CODE INPUT -->
+                <div class="code-wrapper">
+
+                    <label>Verification Code</label>
+
+                    <input
+                    type="text"
+                    name="code"
+                    maxlength="4"
+                    id="codeInput"
+                    class="code-input"
+                    placeholder="----"
+                    required>
+
+                </div>
+
+
+                <!-- VERIFY BUTTON -->
+                <button id="verifyBtn" class="auth-btn">
+
+                    <span class="btn-text">
+                        Verify Identity
+                    </span>
+
+                    <div class="btn-loader"></div>
+
+                </button>
+
+            </form>
+
+            <!-- RESEND SECTION -->
+            <div class="resend-box">
+
+                <div class="timer-display">
+
+                    <div class="timer-icon">
+                        <i class="fa fa-clock"></i>
+                    </div>
+
+                    <div>
+
+                        <small class="timer-label">
+                            Verification Timer
+                        </small>
+
+                        <div id="timerText" class="timer-text">
+                            Resend in 30s
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <button id="resendBtn" class="resend-btn">
+
+                    <i class="fa fa-rotate-right"></i>
+
+                    <span>
+                        Resend Code
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <!-- SECURITY NOTICE -->
+            <div class="security-box">
+
+                <div class="security-icon">
+                    <i class="fa fa-shield-alt"></i>
+                </div>
+
+                <div>
+
+                    <h6>Protected Verification</h6>
+
+                    <p>
+                        Your verification code expires automatically
+                        for additional security and account safety.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/verify_code.js') }}"></script>
+
+{% endblock %}

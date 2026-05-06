@@ -1,0 +1,193 @@
+{% extends "layout/base.html" %}
+{% block content %}
+
+<div class="auth-page">
+
+    <!-- ================= LEFT PANEL ================= -->
+    <div class="auth-left">
+
+        <div class="auth-left-overlay"></div>
+
+        <div class="auth-left-content">
+
+            <div class="auth-badge">
+                <i class="fa fa-shield-alt"></i>
+                Identity Verification
+            </div>
+
+            <h1>
+                Secure <br>
+                Verification Flow
+            </h1>
+
+            <p>
+                To protect your account and wallet,
+                choose a secure verification method
+                to receive your recovery code instantly.
+            </p>
+
+            <div class="auth-features">
+
+                <div class="feature-item">
+                    <i class="fa fa-envelope"></i>
+                    <span>Email Verification Access</span>
+                </div>
+
+                <div class="feature-item">
+                    <i class="fa fa-mobile-screen"></i>
+                    <span>Phone Recovery Support</span>
+                </div>
+
+                <div class="feature-item">
+                    <i class="fa fa-lock"></i>
+                    <span>Protected Account Recovery</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= RIGHT PANEL ================= -->
+    <div class="auth-right">
+
+        <div class="auth-card-pro">
+
+            <!-- HEADER -->
+            <div class="auth-header">
+
+                <div class="auth-logo">
+                    <i class="fa fa-user-shield"></i>
+                </div>
+
+                <h3>Verify Your Identity</h3>
+
+                <p>
+                    Select where you want to receive
+                    your verification code
+                </p>
+
+            </div>
+
+
+            <!-- OPTIONS -->
+            <div class="verification-grid">
+
+                <!-- EMAIL -->
+                <a href="/auth/send-reset-code/email" class="verify-card-pro">
+
+                    <div class="verify-top">
+
+                        <div class="verify-icon email">
+
+                            <i class="fa fa-envelope"></i>
+
+                        </div>
+
+                        <div class="verify-badge">
+                            Recommended
+                        </div>
+
+                    </div>
+
+                    <div class="verify-body">
+
+                        <h5>Email Verification</h5>
+
+                        <p>
+                            Receive your reset code
+                            securely through email.
+                        </p>
+
+                    </div>
+
+                    <div class="verify-footer">
+
+                        <div class="verify-info">
+                            {{ masked_email }}
+                        </div>
+
+                        <div class="verify-arrow">
+                            <i class="fa fa-arrow-right"></i>
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!-- PHONE -->
+                <a href="/auth/send-reset-code/phone" class="verify-card-pro">
+
+                    <div class="verify-top">
+
+                        <div class="verify-icon phone">
+
+                            <i class="fa fa-phone"></i>
+
+                        </div>
+
+                        <div class="verify-badge alt">
+                            Fast Access
+                        </div>
+
+                    </div>
+
+                    <div class="verify-body">
+
+                        <h5>Phone Verification</h5>
+
+                        <p>
+                            Get a verification code
+                            directly to your phone number.
+                        </p>
+
+                    </div>
+
+                    <div class="verify-footer">
+
+                        <div class="verify-info">
+                            {{ masked_phone }}
+                        </div>
+
+                        <div class="verify-arrow">
+                            <i class="fa fa-arrow-right"></i>
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+
+            <!-- SECURITY BOX -->
+            <div class="security-box">
+
+                <div class="security-icon">
+                    <i class="fa fa-lock"></i>
+                </div>
+
+                <div>
+
+                    <h6>Secure Recovery System</h6>
+
+                    <p>
+                        Your verification process is encrypted
+                        and protected for maximum account safety.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

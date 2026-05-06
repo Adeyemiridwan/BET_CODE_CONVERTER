@@ -1,0 +1,425 @@
+{% extends "layout/base.html" %}
+{% block content %}
+
+<div class="profile-wrapper">
+
+    <!-- ================= HERO ================= -->
+
+    <div class="profile-hero">
+
+        <div class="hero-overlay"></div>
+
+        <div class="profile-hero-content">
+
+            <!-- ================= LEFT ================= -->
+
+            <div class="profile-left">
+
+                <div class="profile-image-wrapper">
+
+                    <img
+                    src="{{ url_for('static', filename='uploads/' + (current_user.image or 'default.png')) }}"
+                    class="profile-image"
+                    id="profilePreview">
+
+                    <label class="edit-avatar-btn">
+
+                        <i class="fa fa-camera"></i>
+
+                        <input
+                        type="file"
+                        name="image"
+                        id="imageInput"
+                        form="profileForm"
+                        hidden>
+
+                    </label>
+
+                </div>
+
+                <div class="profile-user-info">
+
+                    <h3>
+                        {{ current_user.first_name }}
+                        {{ current_user.last_name }}
+                    </h3>
+
+                    <p>
+                        @{{ current_user.username }}
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= RIGHT ================= -->
+
+            <div class="profile-right">
+
+                <div class="profile-badge-card">
+
+                    <!-- EMAIL -->
+
+                    <div class="badge-item">
+
+                        <div class="badge-icon success">
+                            <i class="fa fa-envelope"></i>
+                        </div>
+
+                        <div>
+
+                            <small>Email Status</small>
+
+                            {% if current_user.is_email_verified %}
+
+                            <div class="verified-text">
+                                Verified
+                            </div>
+
+                            {% else %}
+
+                            <a href="/auth/send-verification/email"
+                            class="verify-link">
+
+                                Verify Now
+
+                            </a>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PHONE -->
+
+                    <div class="badge-item">
+
+                        <div class="badge-icon primary">
+                            <i class="fa fa-phone"></i>
+                        </div>
+
+                        <div>
+
+                            <small>Phone Status</small>
+
+                            {% if current_user.is_phone_verified %}
+
+                            <div class="verified-text">
+                                Verified
+                            </div>
+
+                            {% else %}
+
+                            <a href="/auth/send-verification/phone"
+                            class="verify-link">
+
+                                Verify Now
+
+                            </a>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= GRID ================= -->
+
+    <div class="profile-main-grid">
+
+        <!-- ================= OVERVIEW ================= -->
+
+        <div class="profile-side-card">
+
+            <div class="side-card-header">
+                <h6>Account Overview</h6>
+            </div>
+
+            <div class="overview-list">
+
+                <!-- USERNAME -->
+
+                <div class="overview-item">
+
+                    <div class="overview-icon blue">
+                        <i class="fa fa-user"></i>
+                    </div>
+
+                    <div class="overview-content">
+
+                        <small>Username</small><br>
+
+                        <strong>
+                            @{{ current_user.username }}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="overview-item">
+
+                    <div class="overview-icon green">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+
+                    <div class="overview-content">
+
+                        <small>Email Address</small><br>
+
+                        <strong class="break-text">
+                            {{ current_user.email }}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PHONE -->
+
+                <div class="overview-item">
+
+                    <div class="overview-icon orange">
+                        <i class="fa fa-phone"></i>
+                    </div>
+
+                    <div class="overview-content">
+
+                        <small>Phone Number</small>
+
+                        <strong class="break-text">
+
+                            {{ current_user.phone or "Not Added" }}
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= FORM ================= -->
+
+        <div class="profile-form-card">
+
+            <div class="form-card-header">
+
+                <div>
+
+                    <h5>Edit Profile</h5>
+
+                    <small>
+                        Update your account information
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <form
+            method="POST"
+            enctype="multipart/form-data"
+            id="profileForm">
+
+                <!-- NAMES -->
+
+                <div class="form-grid">
+
+                    <!-- FIRST -->
+
+                    <div class="input-group-modern">
+
+                        <label>First Name</label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa fa-user"></i>
+
+                            <input
+                            type="text"
+                            name="first_name"
+                            value="{{ current_user.first_name }}"
+                            placeholder="First Name">
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- LAST -->
+
+                    <div class="input-group-modern">
+
+                        <label>Last Name</label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa fa-user"></i>
+
+                            <input
+                            type="text"
+                            name="last_name"
+                            value="{{ current_user.last_name }}"
+                            placeholder="Last Name">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- USERNAME -->
+
+                <div class="input-group-modern">
+
+                    <label>Username</label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa fa-at"></i>
+
+                        <input
+                        type="text"
+                        name="username"
+                        value="{{ current_user.username }}"
+                        placeholder="Username">
+
+                    </div>
+
+                </div>
+
+
+                <!-- PHONE -->
+
+                <div class="input-group-modern">
+
+                    <label>Phone Number</label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa fa-phone"></i>
+
+                        <input
+                        type="text"
+                        name="phone"
+                        value="{{ current_user.phone }}"
+                        placeholder="Phone Number">
+
+                    </div>
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="input-group-modern">
+
+                    <label>Email Address</label>
+
+                    <div class="input-wrapper disabled-input">
+
+                        <i class="fa fa-envelope"></i>
+
+                        <input
+                        type="email"
+                        value="{{ current_user.email }}"
+                        disabled>
+
+                    </div>
+
+                </div>
+
+
+                <!-- UPLOAD -->
+
+                <div class="upload-box">
+
+                    <div class="upload-left">
+
+                        <div class="upload-icon">
+                            <i class="fa fa-image"></i>
+                        </div>
+
+                        <div>
+
+                            <h6>Profile Image</h6>
+
+                            <small>
+                                PNG, JPG, JPEG or WEBP
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        <label class="upload-btn">
+
+                            <i class="fa fa-upload"></i>
+
+                            Choose Image
+
+                            <input
+                            type="file"
+                            name="image"
+                            id="imageInputBottom"
+                            hidden>
+
+                        </label>
+
+                        <small id="fileName"
+                        class="upload-file-name">
+
+                            No file selected
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BUTTON -->
+
+                <button class="save-btn">
+
+                    <i class="fa fa-save"></i>
+
+                    Save Changes
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/profile.js') }}"></script>
+
+{% endblock %}

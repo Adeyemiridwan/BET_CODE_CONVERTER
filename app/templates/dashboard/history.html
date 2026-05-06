@@ -1,0 +1,246 @@
+{% extends "layout/base.html" %}
+{% block content %}
+
+<div class="history-page">
+
+    <!-- ================= HEADER ================= -->
+
+    <div class="history-header">
+
+        <div>
+
+            <div class="history-badge">
+                <i class="fa fa-clock-rotate-left"></i>
+                Conversion Records
+            </div>
+
+            <h2>
+                Conversion History
+            </h2>
+
+            <p>
+                Monitor all converted codes, processing fees,
+                statuses and transaction timelines securely.
+            </p>
+
+        </div>
+
+        <!-- QUICK STATS -->
+        <div class="history-stats">
+
+            <div class="stat-card-mini">
+
+                <div class="stat-icon blue">
+                    <i class="fa fa-code"></i>
+                </div>
+
+                <div>
+                    <small>Total</small>
+                    <h5>{{ conversions|length }}</h5>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= MAIN TABLE CARD ================= -->
+
+    <div class="history-card">
+
+        <!-- TOP BAR -->
+        <div class="history-topbar">
+
+            <div>
+
+                <h5>
+                    Recent Conversions
+                </h5>
+
+                <small>
+                    Full conversion activity log
+                </small>
+
+            </div>
+
+            <div class="table-filter">
+
+                <i class="fa fa-filter"></i>
+
+                <span>
+                    Live History
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= TABLE ================= -->
+
+        <div class="table-responsive">
+
+            <table class="history-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+                        <th>Conversion Details</th>
+                        <th>Fee</th>
+                        <th>Status</th>
+                        <th>Date</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for c in conversions %}
+
+                    <tr>
+
+                        <!-- ID -->
+                        <td>
+
+                            <div class="history-id">
+                                #{{ loop.index }}
+                            </div>
+
+                        </td>
+
+
+                        <!-- CONVERSION -->
+                        <td>
+
+                            <div class="conversion-box">
+
+                                <div class="conversion-icon">
+                                    <i class="fa fa-code"></i>
+                                </div>
+
+                                <div>
+
+                                    <div class="conversion-title">
+
+                                        {{ c.input_code }}
+
+                                        <span class="arrow">
+                                            <i class="fa fa-arrow-right"></i>
+                                        </span>
+
+                                        {{ c.output_code }}
+
+                                    </div>
+
+                                    <small>
+                                        Successfully Processed
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- FEE -->
+                        <td>
+
+                            <div class="fee-box">
+
+                                <span class="fee-amount">
+                                    - ${{ "%.2f"|format(c.fee_charged) }}
+                                </span>
+
+                                <small>
+                                    Service Fee
+                                </small>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- STATUS -->
+                        <td>
+
+                            <div class="status-badge">
+
+                                <div class="status-dot"></div>
+
+                                <span>
+                                    Completed
+                                </span>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- DATE -->
+                        <td>
+
+                            <div class="date-box">
+
+                                <div class="date-main">
+                                    {{ c.created_at.strftime('%d %b %Y') }}
+                                </div>
+
+                                <small>
+                                    {{ c.created_at.strftime('%H:%M') }}
+                                </small>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                    {% else %}
+
+                    <!-- EMPTY -->
+
+                    <tr>
+
+                        <td colspan="5">
+
+                            <div class="empty-history">
+
+                                <div class="empty-icon">
+                                    <i class="fa fa-clock"></i>
+                                </div>
+
+                                <h5>
+                                    No Conversion Yet
+                                </h5>
+
+                                <p>
+                                    Your processed conversion records
+                                    will appear here automatically.
+                                </p>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

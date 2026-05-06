@@ -1,0 +1,483 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+
+<div class="dashboard-page">
+
+    <!-- ================= HERO ================= -->
+
+    <div class="dashboard-hero mb-4">
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+
+            <div>
+
+                <small class="hero-label">
+                    Welcome Back
+                </small>
+
+                <h2 class="hero-title">
+                    Dashboard Overview
+                </h2>
+
+                <p class="hero-subtitle">
+                    Monitor wallet, conversions, revenue & activity in real time.
+                </p>
+
+            </div>
+
+            <div class="hero-icon">
+                <i class="fa fa-chart-line"></i>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= STATS ================= -->
+
+    <div class="row g-4 mb-4">
+
+        <!-- WALLET -->
+
+        <div class="col-xl-4 col-md-6">
+
+            <div class="stats-card wallet-card">
+
+                <div class="stats-glow"></div>
+
+                <div class="stats-top">
+
+                    <div>
+
+                        <span class="stats-label">
+                            Wallet Balance
+                        </span>
+
+                        <h3 class="stats-value">
+                            $ {{ "%.2f"|format(wallet.balance if wallet else 0) }}
+                        </h3>
+
+                    </div>
+
+                    <div class="stats-icon wallet-icon">
+                        <i class="fa fa-wallet"></i>
+                    </div>
+
+                </div>
+
+                <div class="stats-bottom">
+
+                    <div class="mini-pill success-pill">
+                        <i class="fa fa-arrow-trend-up"></i>
+                        Active Wallet
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CONVERSIONS -->
+
+        <div class="col-xl-4 col-md-6">
+
+            <div class="stats-card conversion-card">
+
+                <div class="stats-top">
+
+                    <div>
+
+                        <span class="stats-label">
+                            Total Conversions
+                        </span>
+
+                        <h3 class="stats-value">
+                            {{ total_conversions }}
+                        </h3>
+
+                    </div>
+
+                    <div class="stats-icon conversion-icon">
+                        <i class="fa fa-code"></i>
+                    </div>
+
+                </div>
+
+                <div class="stats-bottom">
+
+                    <div class="mini-pill primary-pill">
+                        <i class="fa fa-bolt"></i>
+                        Fast Processing
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FEES -->
+
+        <div class="col-xl-4 col-md-12">
+
+            <div class="stats-card fees-card">
+
+                <div class="stats-top">
+
+                    <div>
+
+                        <span class="stats-label">
+                            Total Fees Paid
+                        </span>
+
+                        <h3 class="stats-value">
+                            $ {{ "%.2f"|format(total_fees) }}
+                        </h3>
+
+                    </div>
+
+                    <div class="stats-icon fees-icon">
+                        <i class="fa fa-dollar-sign"></i>
+                    </div>
+
+                </div>
+
+                <div class="stats-bottom">
+
+                    <div class="mini-pill danger-pill">
+                        <i class="fa fa-chart-pie"></i>
+                        Revenue Analytics
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= QUICK ACTIONS ================= -->
+
+    <div class="quick-actions-wrapper mb-4">
+
+        <a href="/converter" class="quick-action-card">
+            <div class="quick-icon blue">
+                <i class="fa fa-repeat"></i>
+            </div>
+
+            <div class="quick-text">
+                <h6>Convert Code</h6>
+                <small>Generate new betting code</small>
+            </div>
+        </a>
+
+        <a href="/wallet" class="quick-action-card">
+            <div class="quick-icon green">
+                <i class="fa fa-wallet"></i>
+            </div>
+
+            <div class="quick-text">
+                <h6>Wallet</h6>
+                <small>Manage transactions</small>
+            </div>
+        </a>
+
+        <a href="/dashboard/history" class="quick-action-card">
+            <div class="quick-icon purple">
+                <i class="fa fa-clock-rotate-left"></i>
+            </div>
+
+            <div class="quick-text">
+                <h6>History</h6>
+                <small>Track all activities</small>
+            </div>
+        </a>
+
+    </div>
+
+
+    <!-- ================= CHARTS ================= -->
+
+    <div class="row g-4 mb-4">
+
+        <!-- CONVERSION CHART -->
+
+        <div class="col-xl-7">
+
+            <div class="chart-card">
+
+                <div class="chart-header">
+
+                    <div>
+                        <h5>Conversions Trend</h5>
+                        <small>Daily conversion performance</small>
+                    </div>
+
+                    <div class="chart-badge">
+                        Live
+                    </div>
+
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="conversionChart"></canvas>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- REVENUE -->
+
+        <div class="col-xl-5">
+
+            <div class="chart-card">
+
+                <div class="chart-header">
+
+                    <div>
+                        <h5>Revenue Trend</h5>
+                        <small>Generated platform fees</small>
+                    </div>
+
+                    <div class="chart-badge success">
+                        Updated
+                    </div>
+
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= ACTIVITY ================= -->
+
+    <div class="activity-card">
+
+        <div class="activity-header">
+
+            <div>
+                <h5>Recent Activity</h5>
+                <small>Latest user transactions & conversions</small>
+            </div>
+
+            <a href="/dashboard/history" class="activity-link">
+                View All
+            </a>
+
+        </div>
+
+        {% for c in recent_activities %}
+
+        <div class="activity-item">
+
+            <div class="activity-left">
+
+                <div class="activity-icon">
+                    <i class="fa fa-code"></i>
+                </div>
+
+                <div>
+
+                    <div class="activity-title">
+                        Code Converted
+                    </div>
+
+                    <small class="activity-time">
+                        {{ c.created_at.strftime('%d %b %Y • %H:%M') }}
+                    </small>
+
+                </div>
+
+            </div>
+
+            <div class="activity-right">
+
+                <div class="activity-amount">
+                    - ${{ "%.2f"|format(c.fee_charged) }}
+                </div>
+
+                <small class="activity-status">
+                    Completed
+                </small>
+
+            </div>
+
+        </div>
+
+        {% else %}
+
+        <div class="empty-state">
+
+            <div class="empty-icon">
+                <i class="fa fa-chart-line"></i>
+            </div>
+
+            <h6>No Activity Yet</h6>
+
+            <p>
+                Your latest conversions and wallet activity will appear here.
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+
+<!-- ================= CHART ================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+const labels = {{ dates | tojson }};
+const conversionData = {{ counts | tojson }};
+const revenueData = {{ fees | tojson }};
+
+Chart.defaults.color = "#94a3b8";
+Chart.defaults.font.family = "Inter";
+
+if(labels.length > 0){
+
+new Chart(document.getElementById("conversionChart"),{
+
+type:"line",
+
+data:{
+labels:labels,
+
+datasets:[{
+
+data:conversionData,
+
+borderColor:"#3b82f6",
+
+backgroundColor:"rgba(59,130,246,0.12)",
+
+fill:true,
+
+borderWidth:3,
+
+pointRadius:4,
+
+pointHoverRadius:6,
+
+pointBackgroundColor:"#3b82f6",
+
+tension:0.45
+
+}]
+
+},
+
+options:{
+
+responsive:true,
+
+maintainAspectRatio:false,
+
+plugins:{
+legend:{ display:false }
+},
+
+scales:{
+
+x:{
+grid:{ display:false }
+},
+
+y:{
+beginAtZero:true,
+grid:{
+color:"rgba(148,163,184,0.08)"
+}
+}
+
+}
+
+}
+
+});
+
+
+new Chart(document.getElementById("revenueChart"),{
+
+type:"bar",
+
+data:{
+
+labels:labels,
+
+datasets:[{
+
+data:revenueData,
+
+borderRadius:12,
+
+backgroundColor:[
+"#22c55e",
+"#3b82f6",
+"#8b5cf6",
+"#06b6d4",
+"#14b8a6"
+]
+
+}]
+
+},
+
+options:{
+
+responsive:true,
+
+maintainAspectRatio:false,
+
+plugins:{
+legend:{ display:false }
+},
+
+scales:{
+
+x:{
+grid:{ display:false }
+},
+
+y:{
+beginAtZero:true,
+grid:{
+color:"rgba(148,163,184,0.08)"
+}
+}
+
+}
+
+}
+
+});
+
+}
+
+</script>
+
+{% endblock %}

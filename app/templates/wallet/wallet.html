@@ -1,0 +1,536 @@
+{% extends "layout/base.html" %}
+{% block content %}
+
+<div class="wallet-system mb-4">
+
+    <!-- ===================================================== -->
+    <!-- ================= PREMIUM WALLET CARD ================ -->
+    <!-- ===================================================== -->
+
+    <div class="wallet-card-pro">
+
+        <div class="wallet-overlay"></div>
+
+        <div class="wallet-noise"></div>
+
+        <div class="wallet-content">
+
+            <div class="wallet-header-row">
+
+                <div>
+                    <span class="wallet-label">
+                        Available Balance
+                    </span>
+                </div>
+
+                <div class="wallet-chip">
+                    <i class="fa fa-wallet"></i>
+                </div>
+
+            </div>
+
+            <h1 class="wallet-balance">
+                $ {{ "%.2f"|format(wallet.balance) }}
+            </h1>
+
+            <div class="wallet-meta">
+                <span>
+                    <i class="fa fa-shield-halved"></i>
+                    Secure Wallet
+                </span>
+
+                <span class="dot"></span>
+
+                <span>
+                    <i class="fa fa-bolt"></i>
+                    Instant Transactions
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- ================= FLOATING ACTIONS ================= -->
+
+        <div class="wallet-floating-actions">
+
+            <button
+            onclick="switchWalletTab('deposit')"
+            id="btn-deposit"
+            class="action-btn active">
+
+                <i class="fa fa-plus"></i>
+
+                <span>Add</span>
+
+            </button>
+
+
+            <button
+            onclick="switchWalletTab('withdraw')"
+            id="btn-withdraw"
+            class="action-btn">
+
+                <i class="fa fa-arrow-up"></i>
+
+                <span>Withdraw</span>
+
+            </button>
+
+
+            <button
+            onclick="switchWalletTab('transfer')"
+            id="btn-transfer"
+            class="action-btn">
+
+                <i class="fa fa-paper-plane"></i>
+
+                <span>Send</span>
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ===================================================== -->
+    <!-- ================= WALLET PANEL ====================== -->
+    <!-- ===================================================== -->
+
+    <div class="wallet-panel">
+
+        <div class="wallet-panel-inner">
+
+            <!-- ===================================================== -->
+            <!-- ================= DEPOSIT FORM ====================== -->
+            <!-- ===================================================== -->
+
+            <form method="POST" id="depositForm" class="wallet-form active">
+
+                <input type="hidden" name="action" value="deposit">
+
+                <!-- TOP -->
+
+                <div class="deposit-top">
+
+                    <div>
+
+                        <small class="deposit-label">
+                            Wallet Funding
+                        </small>
+
+                        <h5 class="deposit-title">
+                            Add Funds
+                        </h5>
+
+                    </div>
+
+                    <div class="secure-badge">
+
+                        <i class="fa fa-lock"></i>
+
+                        <span>Protected</span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ================= AMOUNT CARD ================= -->
+
+                <div class="premium-amount-card">
+
+                    <div class="amount-currency">
+                        $
+                    </div>
+
+                    <input
+                    type="number"
+                    step="0.01"
+                    name="amount"
+                    id="depositAmount"
+                    class="premium-amount-input"
+                    placeholder="0.00"
+                    required>
+
+                    <div class="amount-side">
+
+                        <span class="mini-label">
+                            USD
+                        </span>
+
+                        <div class="live-dot"></div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ================= QUICK AMOUNTS ================= -->
+
+                <div class="quick-select-wrap">
+
+                    <button
+                    type="button"
+                    class="quick-chip"
+                    onclick="setAmount(10)">
+
+                        +10
+
+                    </button>
+
+                    <button
+                    type="button"
+                    class="quick-chip"
+                    onclick="setAmount(25)">
+
+                        +25
+
+                    </button>
+
+                    <button
+                    type="button"
+                    class="quick-chip"
+                    onclick="setAmount(50)">
+
+                        +50
+
+                    </button>
+
+                    <button
+                    type="button"
+                    class="quick-chip"
+                    onclick="setAmount(100)">
+
+                        +100
+
+                    </button>
+
+                    <button
+                    type="button"
+                    class="quick-chip"
+                    onclick="setAmount(500)">
+
+                        +500
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- ================= PAYMENT METHOD ================= -->
+
+                <div class="payment-box">
+
+                    <div class="payment-left">
+
+                        <div class="payment-icon">
+                            <i class="fa fa-credit-card"></i>
+                        </div>
+
+                        <div>
+
+                            <div class="payment-title">
+                                Instant Funding
+                            </div>
+
+                            <small class="payment-sub">
+                                Secure transaction processing
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                    <i class="fa fa-angle-right payment-arrow"></i>
+
+                </div>
+
+
+
+                <!-- ================= SUMMARY ================= -->
+
+                <div class="fund-summary">
+
+                    <div class="summary-row">
+
+                        <span>Deposit Amount</span>
+
+                        <strong id="summaryAmount">
+                            $0.00
+                        </strong>
+
+                    </div>
+
+                    <div class="summary-row">
+
+                        <span>Processing Fee</span>
+
+                        <strong>
+                            $0.00
+                        </strong>
+
+                    </div>
+
+                    <div class="summary-divider"></div>
+
+                    <div class="summary-row total">
+
+                        <span>Total Credit</span>
+
+                        <strong id="summaryTotal">
+                            $0.00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ================= BUTTON ================= -->
+
+                <button class="deposit-submit-btn">
+
+                    <span class="btn-icon">
+                        <i class="fa fa-lock"></i>
+                    </span>
+
+                    <span class="btn-text">
+                        Add Funds Securely
+                    </span>
+
+                    <span class="btn-arrow">
+                        <i class="fa fa-arrow-right"></i>
+                    </span>
+
+                </button>
+
+            </form>
+
+
+
+            <!-- ===================================================== -->
+            <!-- ================= WITHDRAW FORM ===================== -->
+            <!-- ===================================================== -->
+
+            <form method="POST" id="withdrawForm" class="wallet-form">
+
+                <input type="hidden" name="action" value="withdraw">
+
+                <div class="simple-form-top">
+
+                    <h5>
+                        Withdraw Funds
+                    </h5>
+
+                    <small>
+                        Withdraw directly from wallet balance
+                    </small>
+
+                </div>
+
+                <div class="modern-input-box">
+
+                    <i class="fa fa-arrow-up"></i>
+
+                    <input
+                    type="number"
+                    step="0.01"
+                    name="amount"
+                    placeholder="Enter amount"
+                    required>
+
+                </div>
+
+                <button class="modern-action-btn warning-btn">
+
+                    Withdraw Funds
+
+                </button>
+
+            </form>
+
+
+
+            <!-- ===================================================== -->
+            <!-- ================= TRANSFER FORM ===================== -->
+            <!-- ===================================================== -->
+
+            <form method="POST" id="transferForm" class="wallet-form">
+
+                <input type="hidden" name="action" value="transfer">
+
+                <div class="simple-form-top">
+
+                    <h5>
+                        Send Money
+                    </h5>
+
+                    <small>
+                        Transfer securely to another wallet
+                    </small>
+
+                </div>
+
+
+                <div class="modern-input-box">
+
+                    <i class="fa fa-envelope"></i>
+
+                    <input
+                    type="email"
+                    name="receiver"
+                    placeholder="Receiver Email"
+                    required>
+
+                </div>
+
+
+                <div class="modern-input-box">
+
+                    <i class="fa fa-dollar-sign"></i>
+
+                    <input
+                    type="number"
+                    step="0.01"
+                    name="amount"
+                    placeholder="Enter amount"
+                    required>
+
+                </div>
+
+                <button class="modern-action-btn primary-btn">
+
+                    Send Money
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ===================================================== -->
+<!-- ================= TRANSACTIONS ====================== -->
+<!-- ===================================================== -->
+
+<div class="wallet-transactions card-ui mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+
+        <h6 class="fw-bold">
+            Recent Activity
+        </h6>
+
+    </div>
+
+
+    {% if transactions %}
+
+    {% for t in transactions %}
+
+    <div class="txn-item">
+
+        <div class="txn-left">
+
+            <div class="txn-icon">
+
+                {% if t.type == "deposit" %}
+                <i class="fa fa-arrow-down text-success"></i>
+
+                {% elif t.type == "withdraw" %}
+                <i class="fa fa-arrow-up text-warning"></i>
+
+                {% elif t.type == "transfer_out" %}
+                <i class="fa fa-paper-plane text-primary"></i>
+
+                {% elif t.type == "transfer_in" %}
+                <i class="fa fa-inbox text-info"></i>
+
+                {% else %}
+                <i class="fa fa-dollar-sign text-danger"></i>
+                {% endif %}
+
+            </div>
+
+            <div>
+
+                <div class="txn-title">
+
+                    {% if t.type == "deposit" %}
+                    Deposit
+
+                    {% elif t.type == "withdraw" %}
+                    Withdraw
+
+                    {% elif t.type == "transfer_out" %}
+                    Sent Money
+
+                    {% elif t.type == "transfer_in" %}
+                    Received Money
+
+                    {% else %}
+                    Conversion Fee
+                    {% endif %}
+
+                </div>
+
+                <small>
+                    {{ t.created_at.strftime('%d %b • %H:%M') }}
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="txn-amount">
+
+            {% if t.type in ["withdraw", "transfer_out", "conversion_fee"] %}
+            <span class="neg">
+                - ${{ "%.2f"|format(t.amount) }}
+            </span>
+
+            {% else %}
+            <span class="pos">
+                + ${{ "%.2f"|format(t.amount) }}
+            </span>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+
+    {% else %}
+
+    <div class="empty-state">
+
+        <i class="fa fa-wallet"></i>
+
+        <p>
+            No transactions yet
+        </p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+<script src="{{ url_for('static', filename='js/wallet.js') }}"></script>
+
+{% endblock %}

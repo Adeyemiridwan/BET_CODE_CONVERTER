@@ -1,0 +1,297 @@
+{% extends "layout/base.html" %}
+{% block content %}
+
+<!-- ================= HERO ================= -->
+
+<section class="landing-hero">
+
+    <!-- BACKGROUND EFFECT -->
+    <div class="hero-blur hero-blur-1"></div>
+    <div class="hero-blur hero-blur-2"></div>
+
+    <div class="container position-relative">
+
+        <div class="hero-wrapper">
+
+            <!-- LEFT CONTENT -->
+            <div class="hero-left">
+
+                <div class="hero-badge">
+                    <i class="fa fa-bolt"></i>
+                    Smart Bet Conversion Platform
+                </div>
+
+                <h1 class="hero-title">
+                    Convert Bet Codes
+                    <span>Instantly & Securely</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    Professional bet conversion system with wallet integration,
+                    smart analytics, secure transactions and real-time activity tracking.
+                </p>
+
+                <!-- ACTION BUTTONS -->
+                <div class="hero-actions">
+
+                    {% if current_user.is_authenticated %}
+
+                    <a href="/dashboard" class="hero-btn primary-btn">
+                        <i class="fa fa-chart-line"></i>
+                        Dashboard
+                    </a>
+
+                    <a href="/converter" class="hero-btn glass-btn">
+                        <i class="fa fa-code"></i>
+                        Convert Now
+                    </a>
+
+                    {% else %}
+
+                    <a href="/auth/signup" class="hero-btn primary-btn">
+                        <i class="fa fa-user-plus"></i>
+                        Get Started
+                    </a>
+
+                    <a href="/auth/login" class="hero-btn glass-btn">
+                        <i class="fa fa-lock"></i>
+                        Login
+                    </a>
+
+                    {% endif %}
+
+                </div>
+
+                <!-- STATS -->
+                <div class="hero-stats">
+
+                    <div class="hero-stat-card">
+                        <h3>24/7</h3>
+                        <span>System Active</span>
+                    </div>
+
+                    <div class="hero-stat-card">
+                        <h3>Fast</h3>
+                        <span>Instant Conversion</span>
+                    </div>
+
+                    <div class="hero-stat-card">
+                        <h3>Secure</h3>
+                        <span>Protected Wallet</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT SIDE -->
+            <div class="hero-right">
+
+                <div class="hero-dashboard-card">
+
+                    <!-- TOP -->
+                    <div class="dashboard-top">
+
+                        <div>
+                            <small>Wallet Balance</small>
+                            <h2>$ 24,500.00</h2>
+                        </div>
+
+                        <div class="dashboard-wallet-icon">
+                            <i class="fa fa-wallet"></i>
+                        </div>
+
+                    </div>
+
+                    <!-- TRANSACTION -->
+                    <div class="mini-activity">
+
+                        <div class="mini-icon success">
+                            <i class="fa fa-arrow-down"></i>
+                        </div>
+
+                        <div class="mini-text">
+                            <h6>Deposit Successful</h6>
+                            <small>2 mins ago</small>
+                        </div>
+
+                        <div class="mini-amount positive">
+                            + $500
+                        </div>
+
+                    </div>
+
+                    <div class="mini-activity">
+
+                        <div class="mini-icon primary">
+                            <i class="fa fa-code"></i>
+                        </div>
+
+                        <div class="mini-text">
+                            <h6>Code Converted</h6>
+                            <small>Bet9ja → SportyBet</small>
+                        </div>
+
+                        <div class="mini-amount negative">
+                            - $2
+                        </div>
+
+                    </div>
+
+                    <!-- PROGRESS -->
+                    <div class="system-progress">
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Conversion Speed</span>
+                            <span>98%</span>
+                        </div>
+
+                        <div class="progress modern-progress">
+                            <div class="progress-bar"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="container pb-5">
+
+    <div class="section-title text-center mb-5">
+
+        <span class="section-badge">
+            Features
+        </span>
+
+        <h2 class="fw-bold mt-3">
+            Built For Speed & Security
+        </h2>
+
+        <p class="text-muted">
+            Everything needed for a premium conversion experience
+        </p>
+
+    </div>
+
+    <div class="row g-4">
+
+        <!-- FEATURE 1 -->
+        <div class="col-lg-4 col-md-6">
+
+            <div class="feature-card">
+
+                <div class="feature-icon primary">
+                    <i class="fa fa-bolt"></i>
+                </div>
+
+                <h5>Instant Conversion</h5>
+
+                <p>
+                    Convert bet codes across multiple betting platforms in seconds.
+                </p>
+
+                <div class="feature-line"></div>
+
+            </div>
+
+        </div>
+
+        <!-- FEATURE 2 -->
+        <div class="col-lg-4 col-md-6">
+
+            <div class="feature-card">
+
+                <div class="feature-icon success">
+                    <i class="fa fa-shield-alt"></i>
+                </div>
+
+                <h5>Secure Wallet</h5>
+
+                <p>
+                    Protected wallet system with safe deposits, withdrawals and transfers.
+                </p>
+
+                <div class="feature-line"></div>
+
+            </div>
+
+        </div>
+
+        <!-- FEATURE 3 -->
+        <div class="col-lg-4 col-md-6">
+
+            <div class="feature-card">
+
+                <div class="feature-icon danger">
+                    <i class="fa fa-chart-line"></i>
+                </div>
+
+                <h5>Smart Analytics</h5>
+
+                <p>
+                    Track your conversions, fees and transaction history professionally.
+                </p>
+
+                <div class="feature-line"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="container pb-5">
+
+    <div class="cta-box">
+
+        <div class="cta-content">
+
+            <h2>
+                Ready To Start Converting?
+            </h2>
+
+            <p>
+                Join the modern conversion platform built for speed and precision.
+            </p>
+
+        </div>
+
+        <div class="cta-actions">
+
+            {% if current_user.is_authenticated %}
+
+            <a href="/converter" class="cta-btn">
+                Open Converter
+            </a>
+
+            {% else %}
+
+            <a href="/auth/signup" class="cta-btn">
+                Create Account
+            </a>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+
+{% endblock %}
